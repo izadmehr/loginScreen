@@ -2,6 +2,7 @@
 const {resolve} = require('path');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -21,15 +22,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }],
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'sass-loader',
-        ],
+        use: [
+          'cache-loader',
+          ExtractCssChunks.loader,
+          'css-loader',
+          'clean-css-loader'
+        ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -43,6 +41,12 @@ module.exports = {
   plugins: [
     new CheckerPlugin(),
     new HtmlWebpackPlugin({template: 'index.html.ejs',}),
+    new ExtractCssChunks(
+      {
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+        hot: true
+      })
   ],
   externals: {
     'react': 'React',

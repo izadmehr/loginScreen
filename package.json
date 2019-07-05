@@ -12,20 +12,13 @@
     "starter",
     "boilerplate"
   ],
-  "author": "Viktor Persson",
+  "author": "Meysam Izadmehr",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vikpe/react-webpack-typescript-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/vikpe/react-webpack-typescript-starter/issues"
-  },
-  "homepage": "https://github.com/vikpe/react-webpack-typescript-starter",
   "scripts": {
     "build": "yarn run clean-dist && webpack -p --config=configs/webpack/prod.js",
     "clean-dist": "rm -f -r -d dist",
-    "lint": "tslint './src/**/*.ts*' --format stylish --force",
+    "lint": "eslint ./src/**/*.ts*",
+    "lint:fix": "eslint ./src/**/*.ts* --fix",
     "start": "yarn run start-dev",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev.js",
     "start-prod": "yarn run build && node express.js",
@@ -40,21 +33,30 @@
     "@types/node": "^12.0.10",
     "@types/react": "^16.8.22",
     "@types/react-dom": "^16.8.4",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "cache-loader": "^4.0.1",
+    "clean-css-loader": "^2.0.0",
     "css-loader": "^3.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "express": "^4.17.1",
+    "extract-css-chunks-webpack-plugin": "^4.5.4",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^5.0.0",
     "jest": "^24.8.0",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "react-hot-loader": "^4.11.1",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "tslint": "^5.18.0",
     "typescript": "^3.5.2",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "webpack": "^4.35.0",
@@ -63,5 +65,12 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "final-form": "^4.16.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-final-form": "^6.3.0",
+    "styled-components": "^4.3.2",
+    "zxcvbn": "^4.4.2"
+  }
 }
