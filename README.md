@@ -1,4 +1,4 @@
-# React Webpack Typescript Starter
+# Login Screen
 > Minimal starter with hot module replacement (HMR) for rapid development.
 
 * **[React](https://facebook.github.io/react/)** (16.x)
@@ -11,7 +11,7 @@
 * Production build script
 * Image loading/minification using [Image Webpack Loader](https://github.com/tcoopman/image-webpack-loader)
 * Typescript compiling using [Awesome Typescript Loader](https://github.com/s-panferov/awesome-typescript-loader) (5.x)
-* Code quality (linting) for Typescript.
+* Eslint.
 
 ## Installation
 1. Clone/download repo
@@ -20,7 +20,7 @@
 ## Usage
 **Development**
 
-`yarn run start-dev`
+`yarn start`
 
 * Build app continuously (HMR enabled)
 * App served @ `http://localhost:8080`
@@ -42,11 +42,9 @@ Command | Description
 `yarn run start-prod` | Build app once (HMR disabled) to `/dist/` and serve @ `http://localhost:3000`
 `yarn run build` | Build app to `/dist/`
 `yarn run test` | Run tests
-`yarn run lint` | Run Typescript linter
+`yarn run lint` | Run Eslint
+`yarn run lint:fix` | Fix Eslint errors
 `yarn run start` | (alias of `yarn run start-dev`)
 
 **Note**: replace `yarn` with `npm` if you use npm.
 
-## See also
-* [React Webpack Babel Starter](https://github.com/vikpe/react-webpack-babel-starter)
-* [Isomorphic Webapp Starter](https://github.com/vikpe/isomorphic-webapp-starter)
