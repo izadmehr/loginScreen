@@ -4,6 +4,7 @@
     "airbnb",
     "prettier",
     "prettier/react",
+    "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint"
@@ -30,32 +31,12 @@
     }
   },
   "rules": {
-    "indent": ["error", 4],
-    "space-before-function-paren": "off",
-    "react/prefer-stateless-function": "warn",
-    "react/jsx-one-expression-per-line": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": true }
-    ],
     "react/jsx-filename-extension": [1, { "extensions": [
       ".js",
       ".jsx",
       ".ts",
       ".tsx"
     ] }],
-    "linebreak-style": "off",
-    "global-require": "off",
-    "semi": "warn",
-    "arrow-body-style": "off",
-    "no-multiple-empty-lines": ["warn", { "max": 1 }],
-    "no-unused-expressions": [
-      "error",
-      {
-        "allowTaggedTemplates": true
-      }
-    ],
-    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
     "comma-dangle": 0,
     "no-const-assign": "warn",
     "no-this-before-super": "warn",
