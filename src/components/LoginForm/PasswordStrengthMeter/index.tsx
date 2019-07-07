@@ -8,7 +8,8 @@ interface Props {
   showMeterLabel: boolean;
   notSecure: boolean;
 }
-function createPasswordLabel(score: ZXCVBNScore): string {
+
+export function createPasswordLabel(score: ZXCVBNScore): string {
   switch (score) {
     case 0:
       return "Weak";
