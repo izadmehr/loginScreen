@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
 
-function App() {
+function App(): JSX.Element {
   return (
     <Container className="app">
       <LoginForm />
