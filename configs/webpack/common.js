@@ -7,7 +7,10 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 
 module.exports = {
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
   },
   context: resolve(__dirname, "../../src"),
   module: {

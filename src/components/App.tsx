@@ -1,21 +1,14 @@
-import * as React from "react";
-import { hot } from "react-hot-loader";
+import { hot } from "react-hot-loader/root";
+import React from "react";
 
-import LoginForm from './LoginForm';
+import LoginForm from "./LoginForm";
 
-export interface AppProps {
+function App() {
+  return (
+    <div className="app">
+      <LoginForm />
+    </div>
+  );
 }
 
-class App extends React.Component<AppProps, undefined> {
-    render() {
-        return (
-            <div className="app">
-                <LoginForm />
-            </div>
-        );
-    }
-}
-
-declare let module: Record<string, any>;
-
-export default hot(module)(App);
+export default hot(App);
