@@ -1,7 +1,7 @@
 import React from "react";
 import { ZXCVBNScore } from "zxcvbn";
 
-import PasswordStrengthMeterContianer from "./Styles";
+import PasswordStrengthMeterContianer, { PasswordLabel } from "./Styles";
 
 interface Props {
   score: ZXCVBNScore;
@@ -26,7 +26,7 @@ function createPasswordLabel(score: ZXCVBNScore): string {
 }
 
 function PasswordStrengthMeter(props: Props): JSX.Element {
-  const { score, showMeterLabel } = props;
+  const { score, showMeterLabel, notSecure } = props;
   const passwordLabel = createPasswordLabel(score);
 
   return (
@@ -42,7 +42,12 @@ function PasswordStrengthMeter(props: Props): JSX.Element {
       <div className="password-strength-meter-label">
         {showMeterLabel && (
           <>
-            <strong>Password strength:</strong> {passwordLabel}
+            <strong>
+              Password strength:&nbsp;
+              <PasswordLabel notSecure={notSecure}>
+                {passwordLabel}
+              </PasswordLabel>
+            </strong>
           </>
         )}
       </div>

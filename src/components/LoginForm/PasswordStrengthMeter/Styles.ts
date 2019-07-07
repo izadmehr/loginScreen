@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { colors } from "../../../utlis/constants";
+
 export default styled.div`
   text-align: left;
 
@@ -36,4 +38,10 @@ export default styled.div`
   .strength-Strong::-webkit-progress-value {
     background-color: #70c1b3;
   }
+`;
+
+export const PasswordLabel = styled.p`
+  color: ${({ notSecure }: { notSecure: boolean }) =>
+    notSecure ? colors.error : "black"};
+  display: inline-block;
 `;
