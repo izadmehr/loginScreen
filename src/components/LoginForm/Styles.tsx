@@ -20,7 +20,7 @@ export default styled.div`
     background-color: #ffffff;
 
     .logo {
-      width: 9rem;
+      width: 11rem;
       margin: 0 auto;
       display: block;
     }
