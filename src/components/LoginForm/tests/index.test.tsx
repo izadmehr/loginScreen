@@ -9,12 +9,12 @@ test("PasswordStrengthMeter render week password", () => {
   expect(tree).toMatchSnapshot();
 });
 
-test("validate email: something@something.com", async () => {
+test("validate email: something@something.com", () => {
   expect(validateEmail("something@something.com")).toBe(true);
 });
-test("validate email: a@b.b", async () => {
+test("validate email: a@b.b", () => {
   expect(validateEmail("a@b.b")).toBe(false);
 });
-test("validate email: somebody@example", async () => {
+test("validate email: somebody@example", () => {
   expect(validateEmail("somebody@example")).toBe(false);
 });
