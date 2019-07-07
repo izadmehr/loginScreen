@@ -21,10 +21,19 @@ test("PasswordStrengthMeter render strong password", () => {
   expect(tree).toMatchSnapshot();
 });
 
-test("createPasswordLabel result", async () => {
+test("createPasswordLabel for: 0", () => {
   expect(createPasswordLabel(0)).toBe("Weak");
+});
+
+test("createPasswordLabel for : 1", () => {
   expect(createPasswordLabel(1)).toBe("Weak");
+});
+test("createPasswordLabel for : 2", () => {
   expect(createPasswordLabel(2)).toBe("Fair");
+});
+test("createPasswordLabel for : 3", () => {
   expect(createPasswordLabel(3)).toBe("Good");
+});
+test("createPasswordLabel for : 4", () => {
   expect(createPasswordLabel(4)).toBe("Strong");
 });
