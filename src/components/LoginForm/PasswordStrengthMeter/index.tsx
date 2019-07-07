@@ -6,6 +6,7 @@ import PasswordStrengthMeterContianer from "./Styles";
 interface Props {
   score: ZXCVBNScore;
   showMeterLabel: boolean;
+  notSecure: boolean;
 }
 function createPasswordLabel(score: ZXCVBNScore): string {
   switch (score) {
@@ -25,7 +26,7 @@ function createPasswordLabel(score: ZXCVBNScore): string {
 }
 
 function PasswordStrengthMeter(props: Props): JSX.Element {
-  const { score = 4, showMeterLabel } = props;
+  const { score, showMeterLabel } = props;
   const passwordLabel = createPasswordLabel(score);
 
   return (

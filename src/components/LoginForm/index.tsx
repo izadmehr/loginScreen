@@ -24,8 +24,10 @@ function validateEmail(email: string): boolean {
   return re.test(String(email).toLowerCase());
 }
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const projectALogo = require("../../assets/img/projecta-logo.png");
 
+let passwordScore: ZXCVBNScore;
 const App = (): JSX.Element => (
   <Styles>
     <Form
@@ -40,7 +42,9 @@ const App = (): JSX.Element => (
 
         const passwordResult = zxcvbn(values.password || "");
 
-        if (passwordResult.score !== 4) {
+        passwordScore = passwordResult.score;
+
+        if (passwordResult.score <= 2) {
           errors.password = {
             score: passwordResult.score,
             message: passwordResult.feedback.warning
@@ -49,7 +53,7 @@ const App = (): JSX.Element => (
 
         return errors;
       }}
-      render={({ handleSubmit, submitting, invalid }): JSX.Element => (
+      render={({ handleSubmit, submitting }): JSX.Element => (
         <form onSubmit={handleSubmit}>
           <img className="logo" src={projectALogo} alt="Project A logo" />
           <Field name="email">
@@ -82,8 +86,9 @@ const App = (): JSX.Element => (
                   />
                 </label>
                 <PasswordStrengthMeter
-                  score={error && error.score}
+                  score={passwordScore}
                   showMeterLabel={touched || active}
+                  notSecure={!!error}
                 />
                 <div className="error">
                   {error && (touched || active) ? error.message : null}
