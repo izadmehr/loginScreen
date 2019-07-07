@@ -1,14 +1,18 @@
 import { hot } from "react-hot-loader/root";
 import React from "react";
+import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
 
 function App() {
   return (
-    <div className="app">
+    <Container className="app">
       <LoginForm />
-    </div>
+    </Container>
   );
 }
 
+const Container = styled.div`
+  margin: -8px;
+`;
 export default hot(App);

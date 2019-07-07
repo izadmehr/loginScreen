@@ -24,6 +24,8 @@ function validateEmail(email: string): boolean {
   return re.test(String(email).toLowerCase());
 }
 
+const projectALogo = require("../../assets/img/projecta-logo.png");
+
 const App = (): JSX.Element => (
   <Styles>
     <Form
@@ -47,15 +49,9 @@ const App = (): JSX.Element => (
 
         return errors;
       }}
-      render={({
-        handleSubmit,
-        form,
-        submitting,
-        pristine,
-        values,
-        invalid
-      }): JSX.Element => (
+      render={({ handleSubmit, submitting, invalid }): JSX.Element => (
         <form onSubmit={handleSubmit}>
+          <img className="logo" src={projectALogo} alt="Project A logo" />
           <Field name="email">
             {({ input, meta: { active, error, touched } }): JSX.Element => (
               <div>
@@ -68,7 +64,7 @@ const App = (): JSX.Element => (
                     id="email"
                   />
                 </label>
-                <span>{touched && !active ? error : null}</span>
+                <div className="error">{touched && !active ? error : null}</div>
               </div>
             )}
           </Field>
@@ -89,25 +85,15 @@ const App = (): JSX.Element => (
                   score={error && error.score}
                   showMeterLabel={touched || active}
                 />
-                <span>
+                <div className="error">
                   {error && (touched || active) ? error.message : null}
-                </span>
+                </div>
               </div>
             )}
           </Field>
-          <div className="buttons">
-            <button type="submit" disabled={submitting || invalid}>
-              Submit
-            </button>
-            <button
-              type="button"
-              onClick={form.reset}
-              disabled={submitting || pristine}
-            >
-              Reset
-            </button>
-          </div>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
+          <button type="submit" disabled={submitting}>
+            Submit
+          </button>
         </form>
       )}
     />
