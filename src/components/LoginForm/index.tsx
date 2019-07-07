@@ -1,39 +1,63 @@
-import * as React from "react";
+import React from "react";
 import { Form, Field } from "react-final-form";
+import zxcvbn, { ZXCVBNScore } from "zxcvbn";
 
 import Styles from "./Styles";
-import ErrorWithDelay from "./ErrorWithDelay";
+import PasswordStrengthMeter from "./PasswordStrengthMeter";
 
 interface Values {
   email: string;
   password: string;
 }
 
+interface Errors {
+  email?: string;
+  password?: {
+    score: ZXCVBNScore;
+    message: string;
+  };
+}
+function validateEmail(email: string): boolean {
+  // eslint-disable-next-line max-len,no-useless-escape
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  return re.test(String(email).toLowerCase());
+}
+
 const App = (): JSX.Element => (
   <Styles>
     <Form
-      onSubmit={() => {}}
+      onSubmit={(values: Values) => alert(JSON.stringify(values, null, 2))}
       initialValues={{ email: "", password: "" }}
-      validate={(values: Values) => {
-        const errors: Values = {
-          email: "",
-          password: ""
-        };
+      validate={(values: Values): Errors => {
+        const errors: Errors = {};
 
-        if (!values.email) {
-          errors.email = "Required";
+        if (!validateEmail(values.email)) {
+          errors.email = "Wrong email address";
         }
 
-        if (!values.password) {
-          errors.password = "Required";
+        const passwordResult = zxcvbn(values.password || "");
+
+        if (passwordResult.score !== 4) {
+          errors.password = {
+            score: passwordResult.score,
+            message: passwordResult.feedback.warning
+          };
         }
 
         return errors;
       }}
-      render={({ handleSubmit, form, submitting, pristine, values }) => (
+      render={({
+        handleSubmit,
+        form,
+        submitting,
+        pristine,
+        values,
+        invalid
+      }): JSX.Element => (
         <form onSubmit={handleSubmit}>
           <Field name="email">
-            {({ input }) => (
+            {({ input, meta: { active, error, touched } }): JSX.Element => (
               <div>
                 <label htmlFor="email">
                   Email:
@@ -44,15 +68,13 @@ const App = (): JSX.Element => (
                     id="email"
                   />
                 </label>
-                <ErrorWithDelay name="email" delay={1000}>
-                  {error => <span>{error}</span>}
-                </ErrorWithDelay>
+                <span>{touched && !active ? error : null}</span>
               </div>
             )}
           </Field>
 
           <Field name="password">
-            {({ input }) => (
+            {({ input, meta: { active, error, touched } }): JSX.Element => (
               <div>
                 <label htmlFor="password">
                   Password:
@@ -63,14 +85,18 @@ const App = (): JSX.Element => (
                     id="password"
                   />
                 </label>
-                <ErrorWithDelay name="password" delay={1000}>
-                  {error => <span>{error}</span>}
-                </ErrorWithDelay>
+                <PasswordStrengthMeter
+                  score={error && error.score}
+                  showMeterLabel={touched || active}
+                />
+                <span>
+                  {error && (touched || active) ? error.message : null}
+                </span>
               </div>
             )}
           </Field>
           <div className="buttons">
-            <button type="submit" disabled={submitting}>
+            <button type="submit" disabled={submitting || invalid}>
               Submit
             </button>
             <button
