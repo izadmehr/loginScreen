@@ -17,7 +17,7 @@ interface Errors {
     message: string;
   };
 }
-function validateEmail(email: string): boolean {
+export function validateEmail(email: string): boolean {
   // eslint-disable-next-line max-len,no-useless-escape
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -28,7 +28,7 @@ function validateEmail(email: string): boolean {
 const projectALogo = require("../../assets/img/projecta-logo.png");
 
 let passwordScore: ZXCVBNScore;
-const App = (): JSX.Element => (
+const LoginForm = (): JSX.Element => (
   <Styles>
     <Form
       onSubmit={(values: Values) => alert(JSON.stringify(values, null, 2))}
@@ -105,4 +105,4 @@ const App = (): JSX.Element => (
   </Styles>
 );
 
-export default App;
+export default LoginForm;

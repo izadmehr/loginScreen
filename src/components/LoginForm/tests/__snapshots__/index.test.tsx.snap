@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PasswordStrengthMeter render strong password 1`] = `
+<div
+  className="sc-bdVaJa yMIDh"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <img
+      alt="Project A logo"
+      className="logo"
+      src="test-file-stub"
+    />
+    <div>
+      <label
+        htmlFor="email"
+      >
+        Email:
+        <input
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="example@test.com"
+          type="text"
+          value=""
+        />
+      </label>
+      <div
+        className="error"
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="password"
+      >
+        Password:
+        <input
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="********"
+          type="text"
+          value=""
+        />
+      </label>
+      <div
+        className="sc-bwzfXH dDvQJq"
+      >
+        <br />
+        <div
+          className="password-strength-meter-label"
+        />
+      </div>
+      <div
+        className="error"
+      />
+    </div>
+    <button
+      disabled={false}
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
+
+exports[`PasswordStrengthMeter render week password 1`] = `
+<div
+  className="sc-bdVaJa yMIDh"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <img
+      alt="Project A logo"
+      className="logo"
+      src="test-file-stub"
+    />
+    <div>
+      <label
+        htmlFor="email"
+      >
+        Email:
+        <input
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="example@test.com"
+          type="text"
+          value=""
+        />
+      </label>
+      <div
+        className="error"
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="password"
+      >
+        Password:
+        <input
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="********"
+          type="text"
+          value=""
+        />
+      </label>
+      <div
+        className="sc-bwzfXH dDvQJq"
+      >
+        <br />
+        <div
+          className="password-strength-meter-label"
+        />
+      </div>
+      <div
+        className="error"
+      />
+    </div>
+    <button
+      disabled={false}
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;
